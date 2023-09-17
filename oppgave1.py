@@ -9,5 +9,5 @@ elif 30 <= num <= 50 and num != 42:  # This is a chained comparison.
 else:
     print("FEIL!")
 
-#  num >= 30 and num <=50:
+#  num >= 30 and num <=50
 
