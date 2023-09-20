@@ -22,6 +22,7 @@ while packing:
     else:
         print("invalid choice")
 
+# Need to fix case sensitive stuff. Review user input prompts. 
 
 
 
