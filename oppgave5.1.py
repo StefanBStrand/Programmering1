@@ -1,3 +1,4 @@
+#  Dart with multiple players.
 import random
 
 num_of_players = int(input("Enter number of players:"))
@@ -12,7 +13,7 @@ for num in range(num_of_players):
         throws = (random.randrange(0, 60))
         print(throws)
         player_score += throws
-        # player_score = score + throws. Not using the shorthand.
+        # player_score = player_score + throws. Not using the shorthand.
     total_score.append(player_score)
     player_score = 0
 
