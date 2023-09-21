@@ -2,10 +2,10 @@
 
 import random
 
-score = 0
+total_score = 0
 for i in range(3):
-    throws = (random.randrange(0, 60))
-    print(throws)
-    score += throws  # score = score + throws. Not using the shorthand.
+    score = (random.randrange(0, 60))
+    print(score)
+    total_score += score
 
-print(f"The total score is {score}")
+print(f"The total score is {total_score}")
