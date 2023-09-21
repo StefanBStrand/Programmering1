@@ -1,13 +1,14 @@
-# Pakkeliste - bruk liste som du skal iterere gjennom, eller  objekt?
-
+# Pakkeliste
 
 packing_list = []
 packing = True
 first_iteration = True
+instruction = ("To add item type Add.\nTo remove item type Remove.\nTo print list type Print.\nTo stop packing type "
+               "Stop")
 question = "What would you like to do?"
 
 print(question)
-print("To add item type Add.\nTo remove item type Remove.\nTo print list type Print.\nTo stop packing type Stop")
+print(instruction)
 while packing:
     if first_iteration:
         decision = input("Make your choice: ").lower()
@@ -29,9 +30,4 @@ while packing:
     elif decision == "stop":
         packing = False
     else:
-        print("Invalid choice")
-
-# Need to fix case-sensitive stuff. - done
-# Review user input prompts - done
-# WHen user types incorrect command - give list of correct commands
-# Need to check if item is in list before removing. - done
+        print(f"Invalid choice. {instruction}")
