@@ -7,7 +7,7 @@ player_score = 0
 total_score = []
 
 for num in range(num_of_players):
-    print(f"Player {num +1}")
+    print(f"**Player {num +1}**")
     for darts in range(3):
         score = (random.randrange(0, 60))
         print(score)

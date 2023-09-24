@@ -13,7 +13,7 @@ for books in books_tolkien[0:3]:  # Making a variable called "books", which stor
 
 print(lord_of_the_rings)  # if print statement is put inside the for loop, it prints as an iteration.
 
-lord_of_the_rings = []  # If list is not reset, then print statement second time around doubles
+lord_of_the_rings = []  # If list is not reset at this point, then print statement second time around doubles
 # the amount of books printed.
 
 for books in books_tolkien:
