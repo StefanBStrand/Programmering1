@@ -19,5 +19,3 @@ add_movie(movies, "Catch me if you can", "2002", "8.1")
 add_movie(movies, "Good Will Hunting", "1997")  # No value for rating passed in - default value applies
 
 print(movies)
-
-
