@@ -6,9 +6,13 @@ movies = [
     {"name": "Con Air", "year": "1997", "rating": "6.9"}
 ]
 
+
 def print_movies():
-    print(f"{movies["name"]}") # Print movies.name and so on,use f-string to try and solve this. 
+    for movie in movies:
+        print(f"{movie['name']}, {movie['year']}, has a rating of {movie['rating']}.")
 
 
+print_movies()
 
-# The Lion King - 1994 has a rating of 8.5
+# The Lion King - 1994 has a rating of 8.5 - Example printout.
+# (f"{movies[0]['name']}, {movies[0]['year']} has a rating of {movies[0]['rating']}."))
