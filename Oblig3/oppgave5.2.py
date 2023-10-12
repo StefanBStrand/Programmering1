@@ -22,10 +22,12 @@ print_movies()
 
 
 def avg_movie_rating():
-    total_rating = 0
-    for movie in movies:
-        total_rating += float(movie["rating"])
+    total_rating = 0  # initializing a variable for the total rating to be stored.
+    for movie in movies:  # for loop to loop through all the movie ratings in the list
+        total_rating += float(movie["rating"])  # adding up the converted ratings to total_rating.
     return round(total_rating / len(movies), 1)  # rounding the answer down to 1 decimal, for consistency reasons.
+
+# Remember to place return statement outside the loop. If not, it terminates after the first iteration.
          
 
 print(f"The average movie rating is: {avg_movie_rating()}")
