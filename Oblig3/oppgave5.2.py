@@ -22,9 +22,9 @@ print_movies()
 
 
 def avg_movie_rating():
-    total_rating = 0  # initializing a variable for the total rating to be stored.
+    total_rating = 0  # initializing a variable for the total rating to be stored, within funct, out of loop.
     for movie in movies:  # for loop to loop through all the movie ratings in the list
-        total_rating += float(movie["rating"])  # adding up the converted ratings to total_rating.
+        total_rating += float(movie["rating"])  # adding up the converted ratings to total_rating. conv to float.
     return round(total_rating / len(movies), 1)  # rounding the answer down to 1 decimal, for consistency reasons.
 
 # Remember to place return statement outside the loop. If not, it terminates after the first iteration.
@@ -33,3 +33,25 @@ def avg_movie_rating():
 print(f"The average movie rating is: {avg_movie_rating()}")
 
 #  return float(movie['rating']) / len(movies)
+
+#  5.2 C
+
+movies_altered = [
+    {"name": "Inception", "year": "2010", "rating": "8.7"},
+    {"name": "Inside Out", "year": "2015", "rating": "8.1"},
+    {"name": "Con Air", "year": "1997", "rating": "6.9"},
+    {"name": "Killers of The Flower Moon", "year": "2023", "rating": "8.9"},
+    {"name": "Interstellar", "year": "2014", "rating": "8.7"},
+]
+
+
+def movies_from_2010(movie_list, year):
+    movies_to_return = []
+    for movie in movie_list:
+        if float(movie["year"]) >= year:
+            movies_to_return.append(movie)
+
+    return movies_to_return
+
+
+print(movies_from_2010(movies_altered, 2010))
