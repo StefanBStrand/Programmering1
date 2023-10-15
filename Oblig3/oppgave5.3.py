@@ -1,4 +1,7 @@
 # Skrive/lese til fil
+# 5.3 A
+
+import json
 
 movies_altered = [
     {"name": "Inception", "year": "2010", "rating": "8.7"},
@@ -8,8 +11,15 @@ movies_altered = [
     {"name": "Interstellar", "year": "2014", "rating": "8.7"},
 ]
 
-reformatted_movies = [f"{movie['name']} - {movie['year']}, has a rating of {movie['rating']}. \n"
-                      for movie in movies_altered]
+movies_to_json = [json.dumps(movie) for movie in movies_altered]
+
+reformatted_movies = [f"{json.loads(json_movie)['name']} - {json.loads(json_movie)['year']}, has a rating of "
+                      f"{json.loads(json_movie)['rating']}. \n" for json_movie in movies_to_json]
+
+
+# reformatted movies without json conversion:
+# [f"{movie['name']} - {movie['year']}, has a rating of {movie['rating']}. \n"
+#                       for movie in movies_altered]
 
 
 def write_to_file(movie_list, file_name):
@@ -22,6 +32,9 @@ write_to_file(reformatted_movies, "movies.txt")
 with open("movies.txt") as file1:
     content1 = file1.read()
 print(content1)
+
+
+# 5.3 B
 
 
 def print_txt_file(file_name):
