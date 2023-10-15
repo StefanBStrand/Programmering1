@@ -16,19 +16,20 @@ def print_movies():
 print_movies()
 
 # The Lion King - 1994 has a rating of 8.5 - Example printout.
-# (f"{movies[0]['name']}, {movies[0]['year']} has a rating of {movies[0]['rating']}."))
+# (f"{movies[0]['name']}, {movies[0]['year']} has a rating of {movies[0]['rating']}.")) - Only prints index.pos. 0
+# with desired output.
 
 # 5.2 B
 
 
 def avg_movie_rating():
-    total_rating = 0  # initializing a variable for the total rating to be stored, within funct, out of loop.
+    total_rating = 0  # initializing a variable for the total rating to be stored, within funct, outside of loop.
     for movie in movies:  # for loop to loop through all the movie ratings in the list
         total_rating += float(movie["rating"])  # adding up the converted ratings to total_rating. conv to float.
     return round(total_rating / len(movies), 1)  # rounding the answer down to 1 decimal, for consistency reasons.
 
 # Remember to place return statement outside the loop. If not, it terminates after the first iteration.
-         
+
 
 print(f"The average movie rating is: {avg_movie_rating()}")
 
@@ -46,7 +47,7 @@ movies_altered = [
 
 
 def movies_from_2010(movie_list, year):
-    movies_to_return = []
+    movies_to_return = []  # creating an empty list where movies to be returned will be stored.
     for movie in movie_list:
         if float(movie["year"]) >= year:
             movies_to_return.append(movie)
