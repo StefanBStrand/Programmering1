@@ -1,4 +1,5 @@
 # Oppgave 1 - Klasser og objekter
+# A:
 
 class Movies:
     def __init__(self, title, year, score):
