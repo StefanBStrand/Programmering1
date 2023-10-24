@@ -2,10 +2,11 @@
 # A:
 
 class Movies:
-    def __init__(self, title, year, score):
+    def __init__(self, title, year, score):  # init method with attributes title, year and score
         self.title = title
         self.year = year
         self.score = score
+        #  a method is a function that is associated with an object.
 
     def movie_info(self):
         return f"{self.title} - was released in {self.year} and currently has a score of {self.score}."
