@@ -23,3 +23,9 @@ print(f"{movie3.title} was released in {movie3.year} and currently has a score o
 print(movie1.movie_info())
 print(movie2.movie_info())
 print(movie3.movie_info())
+
+# title, year and score are both attributes of the Movies class and parameters of the init method.
+# an attribute is a variable associated with an instance, or class. It represents some kind of state or
+# data for the object. Accessible via dot notation. A parameter on the other hand is a named entity
+# in the function/method definition. When a method/function is called, you provide values for these parameters,
+# and these values are referred to as arguments.
