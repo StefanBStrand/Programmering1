@@ -90,11 +90,14 @@ def play_blackjack():
             print("Invalid betting! Please enter a valid bet number.")
             continue  # jumps to next iteration of loop, prompting user for new input.
 
-        if int(new_deal) > player1.chips:
+        if new_deal > player1.chips:
             print("You cannot bet more chips than you have in total")
+        elif new_deal <= 0:
+            print("Please place a bet greater than 0")
         else:
-            player1.bet = player1.chips - int(new_deal)
-            print(f"You bet {new_deal} chips. You now have {player1.bet} chips remaining")
+            player1.bet = int(new_deal)
+            player1.chips -= player1.bet
+            print(f"You bet {new_deal} chips. You now have {player1.chips} chips remaining")
             random.shuffle(deck)
 
 
