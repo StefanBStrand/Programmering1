@@ -20,7 +20,7 @@ class Dealer:
         self.action = action
 
 
-# The following code is for creating the deck of cards needed to play the game:
+# ***** The following code is for creating the deck of cards needed to play the game: *****
 
 class Card:  # creating a Card class to represent the special attributes of a deck of cards.
     def __init__(self, rank, suit, value):
@@ -30,7 +30,7 @@ class Card:  # creating a Card class to represent the special attributes of a de
 
     def __repr__(self):
         return f"{self.rank} of {self.suit}"  # If trying to print out deck without the repr method, it will
-    #  print out a not so human friendly printout.
+    #  print out a not so human friendly printout. 
 
 
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
@@ -53,7 +53,7 @@ for card_suit in suits:
 for card in deck:
     print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
-# End of code creating a deck of cards.
+# ***** End of code creating a deck of cards. *****
 
 
 prompts = []
