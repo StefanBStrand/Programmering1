@@ -60,6 +60,25 @@ for card_suit in suits:
         card = Card(card_rank, card_suit, card_value)
         deck.append(card)
 
+
+# code to create 6 decks to use in game: wrapping the deck code in for loop, iterating 6 times and adding to master.
+# at first
+
+master_deck = []
+
+for i in range(6):
+    for card_suit in suits:
+        for card_rank in ranks:
+            if card_rank == "Ace":
+                card_value = 11  # Ace needs to be handled within the function, in case it should be valued as 1 instead.
+            elif card_rank in ["Jack", "Queen", "King"]:
+                card_value = 10
+            else:
+                card_value = int(card_rank)
+
+            card = Card(card_rank, card_suit, card_value)
+            master_deck.append(card)
+
 # for card in deck:
     # print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
