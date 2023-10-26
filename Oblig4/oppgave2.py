@@ -19,7 +19,7 @@ class Player:
         self.player_score = 0
 
 
-player1 = Player() # Creating an object(instance of the class Player)
+player1 = Player()  # Creating an object(instance of the class Player)
 
 
 class Dealer:
@@ -46,23 +46,10 @@ class Card:  # creating a Card class to represent the special attributes of a ca
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
 suits = ["Hearts", "Clubs", "Spades", "Diamonds"]  # List of card suits.
 
-deck = []  # empty list to store my deck, once created with the help of a for-loop.
 
-for card_suit in suits:
-    for card_rank in ranks:
-        if card_rank == "Ace":
-            card_value = 11  # Ace needs to be handled within the function, in case it should be valued as 1 instead.
-        elif card_rank in ["Jack", "Queen", "King"]:
-            card_value = 10
-        else:
-            card_value = int(card_rank)
+# code to create 6 decks to use in game: wrapping the deck-creating for-loop in for loop of its own,
+# iterating 6 times and adding to master_deck.
 
-        card = Card(card_rank, card_suit, card_value)
-        deck.append(card)
-
-
-# code to create 6 decks to use in game: wrapping the deck code in for loop, iterating 6 times and adding to master.
-# at first
 
 master_deck = []
 
@@ -70,7 +57,8 @@ for i in range(6):
     for card_suit in suits:
         for card_rank in ranks:
             if card_rank == "Ace":
-                card_value = 11  # Ace needs to be handled within the function, in case it should be valued as 1 instead.
+                card_value = 11
+                # Ace needs to be handled within the function, in case it should be valued as 1 instead.
             elif card_rank in ["Jack", "Queen", "King"]:
                 card_value = 10
             else:
@@ -117,7 +105,7 @@ def play_blackjack():
             player1.bet = int(new_deal)
             player1.chips -= player1.bet
             print(f"You bet {new_deal} chips. You now have {player1.chips} chips remaining")
-            random.shuffle(deck)
+            random.shuffle(master_deck)
 
 
 play_blackjack()
