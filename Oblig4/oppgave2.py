@@ -19,7 +19,7 @@ class Player:
         self.player_score = 0
 
 
-player1 = Player()
+player1 = Player() # Creating an object(instance of the class Player)
 
 
 class Dealer:
@@ -27,7 +27,7 @@ class Dealer:
         self.dealer_score = 0
 
 
-dealer = Dealer()
+dealer = Dealer()  # creating an object(instance of the class Dealer)
 
 
 # ***** The following code is for creating the deck of cards needed to play the game: *****
