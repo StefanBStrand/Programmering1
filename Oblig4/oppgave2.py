@@ -6,6 +6,7 @@
 #  List to hold all the prompts/questions?
 #  One list for dealer hand and one list for player hand.
 
+import random
 
 class Player:
     def __init__(self, chips, bet, player_score):
@@ -22,7 +23,7 @@ class Dealer:
 
 # ***** The following code is for creating the deck of cards needed to play the game: *****
 
-class Card:  # creating a Card class to represent the special attributes of a deck of cards.
+class Card:  # creating a Card class to represent the special attributes of a card (in a deck of cards).
     def __init__(self, rank, suit, value):
         self.rank = rank
         self.suit = suit
@@ -30,7 +31,7 @@ class Card:  # creating a Card class to represent the special attributes of a de
 
     def __repr__(self):
         return f"{self.rank} of {self.suit}"  # If trying to print out deck without the repr method, it will
-    #  print out a not so human friendly printout. 
+    #  print out a not so human friendly printout.
 
 
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
@@ -50,13 +51,14 @@ for card_suit in suits:
         card = Card(card_rank, card_suit, card_value)
         deck.append(card)
 
-for card in deck:
-    print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
+# for card in deck:
+    # print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
 # ***** End of code creating a deck of cards. *****
 
 
-prompts = []
+#prompts = []
+
 player_hand = []
 dealer_hand = []
 
@@ -73,3 +75,9 @@ def play_blackjack():
         Dealer.dealer_score = 0
         Player.player_score = 0
         Player.chips = 3000
+        new_deal = input(f"Place your bet! You currently have {Player.chips} chips. How much ya bettin'?:")
+        Player.bet = Player.chips - int(new_deal)
+        print(f"You bet {new_deal} chips. You now have {Player.bet} chips remaining")
+
+
+play_blackjack()
