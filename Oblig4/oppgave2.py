@@ -68,13 +68,19 @@ for i in range(6):
             else:
                 card_value = int(card_rank)
 
-            card = Card(card_rank, card_suit, card_value)
+            card = Card(card_rank, card_suit, card_value)  # making an instance of the Card class.
             master_deck.append(card)
 
 # for card in master_deck:
-    #print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
+    # print(card.value)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
 # ***** End of code creating a deck of cards. *****
+
+# ***** Creating blackjack variable *****
+
+face_cards = [card for card in master_deck if card.rank in ["Jack", "Queen", "King"]]
+aces = [card for card in master_deck if card.rank == "Ace"]
+
 
 
 # Components for blackjack:
@@ -112,11 +118,26 @@ def play_blackjack():
             random.shuffle(master_deck)
             player1.player_hand.append(master_deck.pop())
             player1.player_hand.append(master_deck.pop())
-            dealer.dealer_hand.append(master_deck.pop())
-            dealer.dealer_hand.append(master_deck.pop())
-            # FIX ISSUE WITH ACES AND VALUE HERE. FACE CARD.. 
-        if card
-            print(f"Cards have been dealt. You have {player1.player_hand} with a value of {card_value}")
 
 
-play_blackjack()
+            # I NEED TO ADD THE VALUES OF THE GIVEN CARDS TOGETHER _ FIXED
+
+            for card in player1.player_hand:
+                player1.player_score += card.value
+
+            # NOW I NEED TO MAKE THE BLACKJACK CHECK WORK - FIX THIS FRIDAY! COde GOES HERE
+
+            dealer.dealer_hand.append(master_deck.pop())
+            dealer.dealer_hand.append(master_deck.pop())
+
+            if player1.player_hand == aces and face_cards:
+                player1.bet += player1.bet * 3
+                player1.chips += player1.bet
+                print(f"{player1.player_hand} Blackjack! You win 2x your bet!")
+                continue
+            else:
+                print(f"Cards have been dealt. You have {player1.player_hand} with a value of {player1.player_score}")
+
+
+#play_blackjack()
+
