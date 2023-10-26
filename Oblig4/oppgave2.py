@@ -114,7 +114,7 @@ def play_blackjack():
             player1.player_hand.append(master_deck.pop())
             dealer.dealer_hand.append(master_deck.pop())
             dealer.dealer_hand.append(master_deck.pop())
-            # FIX ISSUE WITH ACES AND VALUE HERE. 
+            # FIX ISSUE WITH ACES AND VALUE HERE. FACE CARD.. 
         if card
             print(f"Cards have been dealt. You have {player1.player_hand} with a value of {card_value}")
 
