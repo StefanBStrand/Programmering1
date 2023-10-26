@@ -8,17 +8,26 @@
 
 import random
 
+
+STARTING_CHIPS = 3000
+
+
 class Player:
-    def __init__(self, chips, bet, player_score):
-        self.chips = chips
-        self.bet = bet
-        self.score = player_score
+    def __init__(self):
+        self.chips = STARTING_CHIPS
+        self.bet = 0
+        self.player_score = 0
+
+
+player1 = Player()
 
 
 class Dealer:
-    def __init__(self, dealer_score, action):
-        self.dealer_score = dealer_score
-        self.action = action
+    def __init__(self):
+        self.dealer_score = 0
+
+
+dealer = Dealer()
 
 
 # ***** The following code is for creating the deck of cards needed to play the game: *****
@@ -57,7 +66,7 @@ for card_suit in suits:
 # ***** End of code creating a deck of cards. *****
 
 
-#prompts = []
+# prompts = []
 
 player_hand = []
 dealer_hand = []
@@ -72,12 +81,21 @@ playing = True
 
 def play_blackjack():
     while playing:
-        Dealer.dealer_score = 0
-        Player.player_score = 0
-        Player.chips = 3000
-        new_deal = input(f"Place your bet! You currently have {Player.chips} chips. How much ya bettin'?:")
-        Player.bet = Player.chips - int(new_deal)
-        print(f"You bet {new_deal} chips. You now have {Player.bet} chips remaining")
+        dealer.dealer_score = 0
+        player1.player_score = 0
+        try:
+            # player1.chips = 3000. Replaced with STARTING_CHIPS
+            new_deal = int(input(f"Place your bet! You currently have {player1.chips} chips. How much ya bettin'?:"))
+        except ValueError:
+            print("Invalid betting! Please enter a valid bet number.")
+            continue  # jumps to next iteration of loop, prompting user for new input.
+
+        if int(new_deal) > player1.chips:
+            print("You cannot bet more chips than you have in total")
+        else:
+            player1.bet = player1.chips - int(new_deal)
+            print(f"You bet {new_deal} chips. You now have {player1.bet} chips remaining")
+            random.shuffle(deck)
 
 
 play_blackjack()
