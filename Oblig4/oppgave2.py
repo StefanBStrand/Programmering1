@@ -17,6 +17,7 @@ class Player:
         self.chips = STARTING_CHIPS
         self.bet = 0
         self.player_score = 0
+        self.player_hand = []
 
 
 player1 = Player()  # Creating an object(instance of the class Player)
@@ -25,6 +26,7 @@ player1 = Player()  # Creating an object(instance of the class Player)
 class Dealer:
     def __init__(self):
         self.dealer_score = 0
+        self.dealer_hand = []
 
 
 dealer = Dealer()  # creating an object(instance of the class Dealer)
@@ -42,13 +44,15 @@ class Card:  # creating a Card class to represent the special attributes of a ca
         return f"{self.rank} of {self.suit}"  # If trying to print out deck without the repr method, it will
     #  print out a not so human friendly printout.
 
-
-ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
-suits = ["Hearts", "Clubs", "Spades", "Diamonds"]  # List of card suits.
+    def __str(self):
+        return self.__str()
 
 
 # code to create 6 decks to use in game: wrapping the deck-creating for-loop in for loop of its own,
 # iterating 6 times and adding to master_deck.
+
+ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
+suits = ["Hearts", "Clubs", "Spades", "Diamonds"]  # List of card suits.
 
 
 master_deck = []
@@ -67,16 +71,16 @@ for i in range(6):
             card = Card(card_rank, card_suit, card_value)
             master_deck.append(card)
 
-# for card in deck:
-    # print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
+# for card in master_deck:
+    #print(card)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
 # ***** End of code creating a deck of cards. *****
 
 
-# prompts = []
+# Components for blackjack:
 
-player_hand = []
-dealer_hand = []
+# player_hand = [] Swapped for attribute in Player class
+# dealer_hand = [] Swapped for attribute in Dealer class
 
 hit_or_stand = {
     1: "hit",
@@ -106,6 +110,13 @@ def play_blackjack():
             player1.chips -= player1.bet
             print(f"You bet {new_deal} chips. You now have {player1.chips} chips remaining")
             random.shuffle(master_deck)
+            player1.player_hand.append(master_deck.pop())
+            player1.player_hand.append(master_deck.pop())
+            dealer.dealer_hand.append(master_deck.pop())
+            dealer.dealer_hand.append(master_deck.pop())
+            # FIX ISSUE WITH ACES AND VALUE HERE. 
+        if card
+            print(f"Cards have been dealt. You have {player1.player_hand} with a value of {card_value}")
 
 
 play_blackjack()
