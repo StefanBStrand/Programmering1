@@ -86,10 +86,10 @@ for i in range(6):
 # player_hand = [] Swapped for attribute in Player class
 # dealer_hand = [] Swapped for attribute in Dealer class
 
-hit_or_stand = {
-    1: "hit",
-    2: "stand"
-}
+#hit_or_stand = {
+    #1: "Hit",
+    #2: "Stand"
+#}
 
 playing = True
 
@@ -118,9 +118,8 @@ def play_blackjack():
             player1.player_hand.append(master_deck.pop())  # Dealing first card
             player1.player_hand.append(master_deck.pop())  # Dealing second card
 
-            for card in player1.player_hand:
-                player1.player_score += card.value
-                #  adding the values of the dealt cards to player score.
+            player1.player_score = player1.player_hand[0].value + player1.player_hand[1].value
+            #  adding the values of the dealt cards to player score.
 
             # Start of Blackjack-check block:
             face_cards = ["Jack", "Queen", "King"]
@@ -164,8 +163,30 @@ def play_blackjack():
             # This is a key principle in object-oriented programming, encapsulating data(the attributes) and
             # behaviour (methods) related to the object within a class. When creating instances of the class
             # it becomes very ease and intuitive to access and/or manipulate the attributes of the objects once
-            # created. 
+            # created.
 
+            # Hit or stand decision for player:
+
+            hit_or_stand = input("Do you wish to hit or stand? \n 1 - Hit \n 2 - Stand \n What will it be?:")
+            player_decision = int(hit_or_stand)  # have to make input into int, otherwise crashes (valueError)
+            if player_decision == 1:
+                new_card = master_deck.pop()
+                player1.player_hand.append(new_card)
+                player1.player_score += new_card.value
+                print(f"You chose to hit! You were dealt {new_card} with a value of "
+                      f"{new_card.value}. Your hand now consists of {player1.player_hand} with "
+                      f"a value of {player1.player_score}")
+            else:
+                # Dealer gets card-
+
+
+                # TODO: Add check to see if player busts on hit. If yes = you bust --> GAME OVER! DEALER WINS
+                # TODO: If player stands - in else statement -
+
+
+
+
+            #print(f"You chose to {player_decision}")
 
 
 play_blackjack()
