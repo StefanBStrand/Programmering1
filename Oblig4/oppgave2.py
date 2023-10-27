@@ -78,10 +78,8 @@ for i in range(6):
 
 # ***** Creating blackjack variable *****
 
-#face_cards = [card for card in master_deck if card.rank in ["Jack", "Queen", "King"]]
-#aces = [card for card in master_deck if card.rank == "Ace"]
-
-
+# face_cards = [card for card in master_deck if card.rank in ["Jack", "Queen", "King"]]
+# aces = [card for card in master_deck if card.rank == "Ace"]
 
 # Components for blackjack:
 
@@ -127,16 +125,25 @@ def play_blackjack():
             # Start of Blackjack-check block:
             face_cards = ["Jack", "Queen", "King"]
             ace = "Ace"
+            ten = "10"
             face_count = 0  # counter variable to store face cards if in player hand.
             ace_count = 0  # counter variable to store aces if in player hand.
+            ten_count = 0
 
             for card in player1.player_hand:  # for loop to iterate over the players initially dealt cards.
                 if card.rank in face_cards:  # Checking if rank face cards are found in player hand.
                     face_count += 1  # if so, increment counter by 1
                 if card.rank == ace:  # same for aces. Checking if rank ace in player hand and incrementing if so.
                     ace_count += 1  # incrementing ace count
+                if card.rank == ten:
+                    ten_count += 1
 
             if face_count == 1 and ace_count == 1:
+                player1.bet += player1.bet * 3
+                player1.chips += player1.bet
+                print(f"{player1.player_hand} Blackjack! You win 2x your bet!")
+                continue
+            elif ace_count == 1 and ten_count == 1:
                 player1.bet += player1.bet * 3
                 player1.chips += player1.bet
                 print(f"{player1.player_hand} Blackjack! You win 2x your bet!")
@@ -147,8 +154,6 @@ def play_blackjack():
 
             dealer.dealer_hand.append(master_deck.pop())
             dealer.dealer_hand.append(master_deck.pop())
-
-
 
 
 play_blackjack()
