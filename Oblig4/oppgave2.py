@@ -78,8 +78,8 @@ for i in range(6):
 
 # ***** Creating blackjack variable *****
 
-face_cards = [card for card in master_deck if card.rank in ["Jack", "Queen", "King"]]
-aces = [card for card in master_deck if card.rank == "Ace"]
+#face_cards = [card for card in master_deck if card.rank in ["Jack", "Queen", "King"]]
+#aces = [card for card in master_deck if card.rank == "Ace"]
 
 
 
@@ -97,14 +97,14 @@ playing = True
 
 
 def play_blackjack():
-    while playing:
+    while playing:  # while loop so player can decide on his own when to stop.
         dealer.dealer_score = 0
         player1.player_score = 0
         try:
             # player1.chips = 3000. Replaced with STARTING_CHIPS
             new_deal = int(input(f"Place your bet! You currently have {player1.chips} chips. How much ya bettin'?:"))
         except ValueError:
-            print("Invalid betting! Please enter a valid bet number.")
+            print("Invalid betting! Please enter a valid bet number.")  # try/except to not crash program.
             continue  # jumps to next iteration of loop, prompting user for new input.
 
         if new_deal > player1.chips:
@@ -112,32 +112,44 @@ def play_blackjack():
         elif new_deal <= 0:
             print("Please place a bet greater than 0")
         else:
-            player1.bet = int(new_deal)
-            player1.chips -= player1.bet
+            player1.bet = int(new_deal)  # setting user bet(input) to int
+            player1.chips -= player1.bet  # deducting bet amount from total amount of chips
             print(f"You bet {new_deal} chips. You now have {player1.chips} chips remaining")
-            random.shuffle(master_deck)
-            player1.player_hand.append(master_deck.pop())
-            player1.player_hand.append(master_deck.pop())
 
-
-            # I NEED TO ADD THE VALUES OF THE GIVEN CARDS TOGETHER _ FIXED
+            random.shuffle(master_deck)  # shuffling deck
+            player1.player_hand.append(master_deck.pop())  # Dealing first card
+            player1.player_hand.append(master_deck.pop())  # Dealing second card
 
             for card in player1.player_hand:
                 player1.player_score += card.value
+                #  adding the values of the dealt cards to player score.
 
-            # NOW I NEED TO MAKE THE BLACKJACK CHECK WORK - FIX THIS FRIDAY! COde GOES HERE
+            # Start of Blackjack-check block:
+            face_cards = ["Jack", "Queen", "King"]
+            ace = "Ace"
+            face_count = 0  # counter variable to store face cards if in player hand.
+            ace_count = 0  # counter variable to store aces if in player hand.
 
-            dealer.dealer_hand.append(master_deck.pop())
-            dealer.dealer_hand.append(master_deck.pop())
+            for card in player1.player_hand:  # for loop to iterate over the players initially dealt cards.
+                if card.rank in face_cards:  # Checking if rank face cards are found in player hand.
+                    face_count += 1  # if so, increment counter by 1
+                if card.rank == ace:  # same for aces. Checking if rank ace in player hand and incrementing if so.
+                    ace_count += 1  # incrementing ace count
 
-            if player1.player_hand == aces and face_cards:
+            if face_count == 1 and ace_count == 1:
                 player1.bet += player1.bet * 3
                 player1.chips += player1.bet
                 print(f"{player1.player_hand} Blackjack! You win 2x your bet!")
                 continue
             else:
-                print(f"Cards have been dealt. You have {player1.player_hand} with a value of {player1.player_score}")
+                print(f"Cards have been dealt. You have {player1.player_hand} with a value of "
+                      f"{player1.player_score}")
+
+            dealer.dealer_hand.append(master_deck.pop())
+            dealer.dealer_hand.append(master_deck.pop())
 
 
-#play_blackjack()
+
+
+play_blackjack()
 
