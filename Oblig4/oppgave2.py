@@ -152,8 +152,20 @@ def play_blackjack():
                 print(f"Cards have been dealt. You have {player1.player_hand} with a value of "
                       f"{player1.player_score}")
 
-            dealer.dealer_hand.append(master_deck.pop())
-            dealer.dealer_hand.append(master_deck.pop())
+            dealer.dealer_hand.append(master_deck.pop())  # Dealer gets first card.
+            dealer.dealer_hand.append(master_deck.pop())  # Dealer gets second card.
+
+            for card in dealer.dealer_hand:
+                dealer.dealer_score += card.value  # Adding up values of dealt cards for dealer.
+
+            print(f"The dealers visible card is {dealer.dealer_hand[0]} with a value of {dealer.dealer_hand[0].value}")
+            # Easy access to both the dealers first card in the list, and its value. Since the card
+            # is an instance (object) of the card class, it is stored in the list with all of its attributes.
+            # This is a key principle in object-oriented programming, encapsulating data(the attributes) and
+            # behaviour (methods) related to the object within a class. When creating instances of the class
+            # it becomes very ease and intuitive to access and/or manipulate the attributes of the objects once
+            # created. 
+
 
 
 play_blackjack()
