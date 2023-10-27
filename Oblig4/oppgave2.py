@@ -177,6 +177,7 @@ def play_blackjack():
                       f"{new_card.value}. Your hand now consists of {player1.player_hand} with "
                       f"a value of {player1.player_score}")
             else:
+                
                 # Dealer gets card-
 
 
