@@ -8,7 +8,6 @@
 
 import random
 
-
 STARTING_CHIPS = 3000
 
 
@@ -42,6 +41,7 @@ class Card:  # creating a Card class to represent the special attributes of a ca
 
     def __repr__(self):
         return f"{self.rank} of {self.suit}"  # If trying to print out deck without the repr method, it will
+
     #  print out a not so human friendly printout.
 
     def __str(self):
@@ -53,7 +53,6 @@ class Card:  # creating a Card class to represent the special attributes of a ca
 
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
 suits = ["Hearts", "Clubs", "Spades", "Diamonds"]  # List of card suits.
-
 
 master_deck = []
 
@@ -72,7 +71,7 @@ for i in range(6):
             master_deck.append(card)
 
 # for card in master_deck:
-    # print(card.value)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
+# print(card.value)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
 # ***** End of code creating a deck of cards. *****
 
@@ -86,10 +85,10 @@ for i in range(6):
 # player_hand = [] Swapped for attribute in Player class
 # dealer_hand = [] Swapped for attribute in Dealer class
 
-#hit_or_stand = {
-    #1: "Hit",
-    #2: "Stand"
-#}
+# hit_or_stand = {
+# 1: "Hit",
+# 2: "Stand"
+# }
 
 playing = True
 
@@ -153,8 +152,9 @@ def play_blackjack():
 
             dealer.dealer_hand.append(master_deck.pop())  # Dealer gets first card.
             dealer.dealer_hand.append(master_deck.pop())  # Dealer gets second card.
+            # Fix dealer_hand score add-up! Make same as for player, without for loop. See line 121.
 
-            for card in dealer.dealer_hand:
+            for card in dealer.dealer_hand:  # This can be gone.
                 dealer.dealer_score += card.value  # Adding up values of dealt cards for dealer.
 
             print(f"The dealers visible card is {dealer.dealer_hand[0]} with a value of {dealer.dealer_hand[0].value}")
@@ -168,27 +168,48 @@ def play_blackjack():
             # Hit or stand decision for player:
 
             hit_or_stand = input("Do you wish to hit or stand? \n 1 - Hit \n 2 - Stand \n What will it be?:")
-            player_decision = int(hit_or_stand)  # have to make input into int, otherwise crashes (valueError)
-            if player_decision == 1:
-                new_card = master_deck.pop()
-                player1.player_hand.append(new_card)
-                player1.player_score += new_card.value
-                print(f"You chose to hit! You were dealt {new_card} with a value of "
-                      f"{new_card.value}. Your hand now consists of {player1.player_hand} with "
-                      f"a value of {player1.player_score}")
+            hit_or_stand_decision = int(hit_or_stand)  # have to make input into int, otherwise crashes (valueError)
+            # put this in a try/except block to make sure program does not crash.
+
+            if hit_or_stand_decision == 1:
+                new_card = master_deck.pop()  # new_card variable used to store last card dealt.
+                player1.player_hand.append(new_card)  # appending new card to player hand.
+                player1.player_score += new_card.value  # Tallying score of hand so far.
+
+                if player1.player_score <= 21:  # If player hits and score below 21.
+                    print(f"You chose to hit! You were dealt {new_card} with a value of "
+                          f"{new_card.value}. Your hand now consists of {player1.player_hand} with "
+                          f"a value of {player1.player_score}")
+                elif player1.player_score > 21:
+                    player1.chips -= player1.bet  # deducting bet from total chips when bust.
+                    print(f"Bust! You were dealt {new_card} with a value of {new_card.value} for a total score of"
+                          f" {player1.player_score}.")
+                    play_again_or_not = input(f"Your money is gone..But hey, why not play again? "
+                                              f"\n 1 - Play again \n 2 - Quit \n Make your choice:")
+                    play_or_not_decision = int(play_again_or_not)
+
+                    if play_or_not_decision == 1:
+                        continue
+                    else:
+                        playing = False
+
             else:
-                
-                # Dealer gets card-
-
-
-                # TODO: Add check to see if player busts on hit. If yes = you bust --> GAME OVER! DEALER WINS
-                # TODO: If player stands - in else statement -
+                print("Dealer has to draw card at hand valued at 16. Dealer draws and ")
+                dealer_new_card = master_deck.pop()  # Dealer draws new card
+                dealer.dealer_hand.append(dealer_new_card)
+                dealer.dealer_score += dealer_new_card.value
 
 
 
 
-            #print(f"You chose to {player_decision}")
+            # else:
+
+            # Dealer gets card-
+
+            # TODO: Add check to see if player busts on hit. If yes = you bust --> GAME OVER! DEALER WINS
+            # TODO: If player stands - in else statement -
+
+            # print(f"You chose to {player_decision}")
 
 
 play_blackjack()
-
