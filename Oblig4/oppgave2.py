@@ -111,8 +111,10 @@ def give_hit_or_stand_prompt():
 
 def play_blackjack():
     while True:  # while loop so player can decide on his own when to stop.
-        dealer.dealer_score = 0
-        player1.player_score = 0
+        dealer.dealer_score = 0  # resetting dealer score to zero for each round.
+        player1.player_score = 0  # resetting player score to zero for each round.
+        player1.player_hand = []  # resetting player hand to empty list for each round.
+        dealer.dealer_hand = []  # resetting dealer hand to zero for each round
         try:
             # player1.chips = 3000. Replaced with STARTING_CHIPS
             new_deal = int(input(f"Place your bet! You currently have {player1.chips} chips. How much ya bettin'?:"))
@@ -125,7 +127,7 @@ def play_blackjack():
         elif new_deal <= 0:
             print("Please place a bet greater than 0")
         else:
-            player1.bet = int(new_deal)  # setting user bet(input) to int
+            player1.bet = int(new_deal)  # setting user bet(input) to int (default is string)
             player1.chips -= player1.bet  # deducting bet amount from total amount of chips
             print(f"You bet {new_deal} chips. You now have {player1.chips} chips remaining")
 
@@ -136,7 +138,7 @@ def play_blackjack():
             player1.player_score = player1.player_hand[0].value + player1.player_hand[1].value
             #  adding the values of the dealt cards to player score.
 
-            # Start of Blackjack-check block:
+            # ***** Start of Blackjack-check block: *****
             face_cards = ["Jack", "Queen", "King"]
             ace = "Ace"
             ten = "10"
@@ -166,11 +168,13 @@ def play_blackjack():
                 print(f"Cards have been dealt. You have {player1.player_hand} with a value of "
                       f"{player1.player_score}")
 
+            # ****** End of blackjack check ******
+
+            # ***** Dealer gets dealt cards ******
             dealer.dealer_hand.append(master_deck.pop())  # Dealer gets first card.
             dealer.dealer_hand.append(master_deck.pop())  # Dealer gets second card.
-            # Fix dealer_hand score add-up! Make same as for player, without for loop. See line 121.
 
-            ## Adding up dealer hand
+            # Adding up dealer hand
             dealer.dealer_score = dealer.dealer_hand[0].value + dealer.dealer_hand[1].value
 
             print(f"The dealers visible card is {dealer.dealer_hand[0]} with a value of {dealer.dealer_hand[0].value}")
@@ -195,9 +199,10 @@ def play_blackjack():
                       f"{new_card.value}. Your hand now consists of {player1.player_hand} with "
                       f"a value of {player1.player_score}")
             elif player1.player_score > 21:
-                player1.chips -= player1.bet  # deducting bet from total chips when bust.
                 print(f"Bust! You were dealt {new_card} with a value of {new_card.value} for a total score of"
                       f" {player1.player_score}.")
+
+                # *** FIX TRY EXCEPT FOR WRONG INPUT ****
                 play_again_or_not = input(f"Your money is gone..But hey, why not play again? "
                                           f"\n 1 - Play again \n 2 - Quit \n Make your choice:")
                 play_or_not_decision = int(play_again_or_not)
@@ -205,6 +210,7 @@ def play_blackjack():
                 if play_or_not_decision == 1:
                     play_blackjack()
                 else:
+                    print("See you next time!")
                     exit(0)
 
             hit_or_stand = give_hit_or_stand_prompt()
@@ -222,7 +228,8 @@ def play_blackjack():
             dealer_new_card = master_deck.pop()  # Dealer draws new card
             dealer.dealer_hand.append(dealer_new_card)
             dealer.dealer_score += dealer_new_card.value
-            print(f"Dealer draws {dealer_new_card}")
+            print(f"Dealer draws {dealer_new_card}. Dealer hand now consists of {dealer.dealer_hand} with a"
+                  f"value of {dealer.dealer_score}")
 
             if dealer.dealer_score > 16:
                 draw_dealer_card = False
@@ -233,7 +240,7 @@ def play_blackjack():
 
 
         # Check winner!
-        
+
 
         # Do you wanna play again prompt
 
