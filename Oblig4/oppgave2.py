@@ -56,19 +56,22 @@ suits = ["Hearts", "Clubs", "Spades", "Diamonds"]  # List of card suits.
 
 master_deck = []
 
-for i in range(6):
-    for card_suit in suits:
-        for card_rank in ranks:
-            if card_rank == "Ace":
-                card_value = 11
-                # Ace needs to be handled within the function, in case it should be valued as 1 instead.
-            elif card_rank in ["Jack", "Queen", "King"]:
-                card_value = 10
-            else:
-                card_value = int(card_rank)
 
-            card = Card(card_rank, card_suit, card_value)  # making an instance of the Card class.
-            master_deck.append(card)
+def get_new_deck():
+    for i in range(6):
+        for card_suit in suits:
+            for card_rank in ranks:
+                if card_rank == "Ace":
+                    card_value = 11
+                    # Ace needs to be handled within the function, in case it should be valued as 1 instead.
+                elif card_rank in ["Jack", "Queen", "King"]:
+                    card_value = 10
+                else:
+                    card_value = int(card_rank)
+
+                card = Card(card_rank, card_suit, card_value)  # making an instance of the Card class.
+                master_deck.append(card)
+    return master_deck
 
 # for card in master_deck:
 # print(card.value)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
@@ -109,8 +112,13 @@ def give_hit_or_stand_prompt():
     return hit_or_stand_decision
 
 
+master_deck = get_new_deck()
+
+
 def play_blackjack():
     while True:  # while loop so player can decide on his own when to stop.
+        print(len(master_deck))  # Deck depletes as round go on if funct. not restarted.
+        random.shuffle(master_deck)  # shuffling deck
         dealer.dealer_score = 0  # resetting dealer score to zero for each round.
         player1.player_score = 0  # resetting player score to zero for each round.
         player1.player_hand = []  # resetting player hand to empty list for each round.
@@ -131,7 +139,6 @@ def play_blackjack():
             player1.chips -= player1.bet  # deducting bet amount from total amount of chips
             print(f"You bet {new_deal} chips. You now have {player1.chips} chips remaining")
 
-            random.shuffle(master_deck)  # shuffling deck
             player1.player_hand.append(master_deck.pop())  # Dealing first card
             player1.player_hand.append(master_deck.pop())  # Dealing second card
 
@@ -222,7 +229,7 @@ def play_blackjack():
         while draw_dealer_card:
             if dealer.dealer_score == 21:  # Checking if dealer has BJ - NOt checked...
                 draw_dealer_card = False  # stop dealing cards to dealer.
-                print("Dealer has blackjack! you lose. Better luck next time.")
+                print(f"Dealer has blackjack! {dealer.dealer_hand}. You lose. Better luck next time.")
             elif 17 <= dealer.dealer_score <= 21:  # If dealer has score between 17 and 21, stop dealing cards.
                 draw_dealer_card = False
                 print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
