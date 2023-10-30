@@ -111,6 +111,17 @@ def give_hit_or_stand_prompt():
 
 master_deck = get_new_deck()
 
+# **** Checking winner at end of round ***** This needs to
+"""
+if dealer.dealer_score == player1.player_score:
+    print("Split, dealer and player equal score. No one wins.")
+elif player1.player_score > dealer.dealer_score:
+    player1.bet += player1.bet * 2
+    player1.chips += player1.bet
+    print("You win!")
+elif dealer.dealer_score > player1.player_score:
+    print("Dealer wins!")
+"""
 
 def play_blackjack():
     while True:  # while loop so player can decide on his own when to stop.
@@ -224,12 +235,22 @@ def play_blackjack():
         draw_dealer_card = True
 
         while draw_dealer_card:
-            if dealer.dealer_score == 21:  # Checking if dealer has BJ - NOt checked...
+            if dealer.dealer_score == 21:  # Checking if dealer has BJ - THis works! Checked.
                 draw_dealer_card = False  # stop dealing cards to dealer.
                 print(f"Dealer has blackjack! {dealer.dealer_hand}. You lose. Better luck next time.")
             elif 17 <= dealer.dealer_score <= 21:  # If dealer has score between 17 and 21, stop dealing cards.
                 draw_dealer_card = False
                 print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
+                if dealer.dealer_score > player1.player_score:
+                    print("Dealer wins!")
+                elif dealer.dealer_score == player1.player_score:
+                    print("Split, dealer and player equal score. No one wins.")
+                    player1.chips += player1.bet
+                else:
+                    print("You win")
+                    player1.bet += player1.bet * 2
+                    player1.chips += player1.bet
+
             else:
                 print(f"Dealer has to draw card at hand valued at 16. Dealer has {dealer.dealer_hand} "
                       f"with a value of {dealer.dealer_score}")
@@ -242,33 +263,23 @@ def play_blackjack():
                 if 17 <= dealer.dealer_score <= 21:  # Checked, this works. Dealer stands if true.
                     draw_dealer_card = False
                     print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
+                    if dealer.dealer_score > player1.player_score:
+                        print("Dealer wins!")
+                    elif dealer.dealer_score == player1.player_score:
+                        print("Split, dealer and player equal score. No one wins.")
+                        player1.chips += player1.bet
+                    else:
+                        print("You win")
+                        player1.bet += player1.bet * 2
+                        player1.chips += player1.bet
 
                 elif dealer.dealer_score > 21:  # Checked - this works, prints dealer bust if bust.
                     draw_dealer_card = False
+                    player1.bet += player1.bet * 2
+                    player1.chips += player1.bet
                     print("Dealer bust! You win!")
 
-
-
-
-
-
-        # Check winner!
-
-
-        # Do you wanna play again prompt
-
-
-
-
-
-            # else:
-
-            # Dealer gets card-
-
-            # TODO: Add check to see if player busts on hit. If yes = you bust --> GAME OVER! DEALER WINS
-            # TODO: If player stands - in else statement -
-
-            # print(f"You chose to {player_decision}")
+        # Do you want to play again prompt
 
 
 play_blackjack()
