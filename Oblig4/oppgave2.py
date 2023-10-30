@@ -224,7 +224,6 @@ def play_blackjack():
 
         while draw_dealer_card:
             print("Dealer has to draw card at hand valued at 16.")
-            print(f"Dealer draws card")
             dealer_new_card = master_deck.pop()  # Dealer draws new card
             dealer.dealer_hand.append(dealer_new_card)
             dealer.dealer_score += dealer_new_card.value
