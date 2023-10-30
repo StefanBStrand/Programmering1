@@ -220,14 +220,15 @@ def play_blackjack():
         draw_dealer_card = True
 
         while draw_dealer_card:
-            if dealer.dealer_score == 21:  # Checking if dealer has BJ - NOt checked... 
+            if dealer.dealer_score == 21:  # Checking if dealer has BJ - NOt checked...
                 draw_dealer_card = False  # stop dealing cards to dealer.
                 print("Dealer has blackjack! you lose. Better luck next time.")
             elif 17 <= dealer.dealer_score <= 21:  # If dealer has score between 17 and 21, stop dealing cards.
                 draw_dealer_card = False
                 print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
             else:
-                print("Dealer has to draw card at hand valued at 16.")
+                print(f"Dealer has to draw card at hand valued at 16. Dealer has {dealer.dealer_hand} "
+                      f"with a value of {dealer.dealer_score}")
                 dealer_new_card = master_deck.pop()  # Dealer draws new card
                 dealer.dealer_hand.append(dealer_new_card)
                 dealer.dealer_score += dealer_new_card.value
