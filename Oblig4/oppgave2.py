@@ -1,11 +1,5 @@
 # Lets play blackjack!
 
-# Components to make:
-#  Blackjack class (holding info about game rules?)
-# How to shuffle/pick cards? --> randomization method, rand-range?
-#  List to hold all the prompts/questions?
-#  One list for dealer hand and one list for player hand.
-
 import random
 
 STARTING_CHIPS = 3000
@@ -40,13 +34,13 @@ class Card:  # creating a Card class to represent the special attributes of a ca
         self.value = value
 
     def __repr__(self):
-        return f"{self.rank} of {self.suit}"  # If trying to print out cards without the repr method, it will
-    # print a very non-human friendly way of reading the cards.
+        return f"{self.rank} of {self.suit}"  # If trying to print out cards without the repr method it will
+    # print a very non-human friendly way of reading the cards. repr method returns string representation
+    # of the object. I need this in order for my dealt cards to be understandable.
 
 
-
-# code to create 6 decks to use in game: wrapping the deck-creating for-loop in for loop of its own,
-# iterating 6 times and adding to master_deck.
+# **** Code to create 6 decks to use in game: wrapping the deck-creating for-loop in for loop of its own,
+# iterating 6 times and adding to master_deck. Total of 312 cards to play with (Standard casino practice).
 
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]  # List of card ranks
 suits = ["Hearts", "Clubs", "Spades", "Diamonds"]  # List of card suits.
@@ -70,27 +64,8 @@ def get_new_deck():
                 master_deck.append(card)
     return master_deck
 
-# for card in master_deck:
-# print(card.value)  # Printing out the deck to see if this is correct. Looping it makes it easier to read.
 
-# ***** End of code creating a deck of cards. *****
-
-# ***** Creating blackjack variable *****
-
-# face_cards = [card for card in master_deck if card.rank in ["Jack", "Queen", "King"]]
-# aces = [card for card in master_deck if card.rank == "Ace"]
-
-# Components for blackjack:
-
-# player_hand = [] Swapped for attribute in Player class
-# dealer_hand = [] Swapped for attribute in Dealer class
-
-# hit_or_stand = {
-# 1: "Hit",
-# 2: "Stand"
-# }
-
-# playing = True
+master_deck = get_new_deck()  # made function in order to re-initialize deck for each round, but not working so far.
 
 
 def give_hit_or_stand_prompt():
@@ -109,22 +84,6 @@ def give_hit_or_stand_prompt():
     return hit_or_stand_decision
 
 
-master_deck = get_new_deck()
-
-# **** Checking winner at end of round ***** This needs to
-"""
-if dealer.dealer_score == player1.player_score:
-    print("Split, dealer and player equal score. No one wins.")
-elif player1.player_score > dealer.dealer_score:
-    player1.bet += player1.bet * 2
-    player1.chips += player1.bet
-    print("You win!")
-elif dealer.dealer_score > player1.player_score:
-    print("Dealer wins!")
-
-"""
-
-
 def check_winner():
     if dealer.dealer_score > player1.player_score:
         print("Dealer wins!")
@@ -139,14 +98,13 @@ def check_winner():
 
 def play_blackjack():
     while True:  # while loop so player can decide on his own when to stop.
-        print(len(master_deck))  # Deck depletes as round go on if funct. not restarted.
-        random.shuffle(master_deck)  # shuffling deck
+        print(len(master_deck))  # Deck depletes as round go on if funct. not restarted. Just a check.
+        random.shuffle(master_deck)  # shuffling deck for each round.
         dealer.dealer_score = 0  # resetting dealer score to zero for each round.
         player1.player_score = 0  # resetting player score to zero for each round.
         player1.player_hand = []  # resetting player hand to empty list for each round.
         dealer.dealer_hand = []  # resetting dealer hand to zero for each round
         try:
-            # player1.chips = 3000. Replaced with STARTING_CHIPS
             new_deal = int(input(f"Place your bet! You currently have {player1.chips} chips. How much ya bettin'?:"))
         except ValueError:
             print("Invalid betting! Please enter a valid bet number.")  # try/except to not crash program.
@@ -216,7 +174,7 @@ def play_blackjack():
 
             # Hit or stand decision for player:
 
-        hit_or_stand = give_hit_or_stand_prompt()
+        hit_or_stand = give_hit_or_stand_prompt()  # Extracted to give_hit_or_stand_prompt function.
         while hit_or_stand == 1:
 
             new_card = master_deck.pop()  # new_card variable used to store last card dealt.
@@ -255,7 +213,7 @@ def play_blackjack():
             elif 17 <= dealer.dealer_score <= 21:  # If dealer has score between 17 and 21, stop dealing cards.
                 draw_dealer_card = False
                 print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
-                check_winner()  # check winner fucntion
+                check_winner()  # check winner function replaces block of if statement
 
             else:
                 print(f"Dealer has to draw card at hand valued at 16. Dealer has {dealer.dealer_hand} "
@@ -269,7 +227,7 @@ def play_blackjack():
                 if 17 <= dealer.dealer_score <= 21:  # Checked, this works. Dealer stands if true.
                     draw_dealer_card = False
                     print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
-                    check_winner()
+                    check_winner()  # check winner function replaces block of if statement
 
                 elif dealer.dealer_score > 21:  # Checked - this works, prints dealer bust if bust.
                     draw_dealer_card = False
@@ -277,11 +235,7 @@ def play_blackjack():
                     player1.chips += player1.bet
                     print("Dealer bust! You win!")
 
-        # Do you want to play again prompt
-
-
+        # Do you want to play again prompt - add wherever it is needed! fix this.
 
 
 play_blackjack()
-
-
