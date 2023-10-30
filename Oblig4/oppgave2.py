@@ -40,12 +40,9 @@ class Card:  # creating a Card class to represent the special attributes of a ca
         self.value = value
 
     def __repr__(self):
-        return f"{self.rank} of {self.suit}"  # If trying to print out deck without the repr method, it will
+        return f"{self.rank} of {self.suit}"  # If trying to print out cards without the repr method, it will
+    # print a very non-human friendly way of reading the cards.
 
-    #  print out a not so human friendly printout.
-
-    def __str(self):
-        return self.__str()
 
 
 # code to create 6 decks to use in game: wrapping the deck-creating for-loop in for loop of its own,
