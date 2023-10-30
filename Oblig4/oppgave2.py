@@ -121,7 +121,21 @@ elif player1.player_score > dealer.dealer_score:
     print("You win!")
 elif dealer.dealer_score > player1.player_score:
     print("Dealer wins!")
+
 """
+
+
+def check_winner():
+    if dealer.dealer_score > player1.player_score:
+        print("Dealer wins!")
+    elif dealer.dealer_score == player1.player_score:
+        print("Split, dealer and player equal score. No one wins.")
+        player1.chips += player1.bet
+    else:
+        print("You win")
+        player1.bet += player1.bet * 2
+        player1.chips += player1.bet
+
 
 def play_blackjack():
     while True:  # while loop so player can decide on his own when to stop.
@@ -266,16 +280,6 @@ def play_blackjack():
         # Do you want to play again prompt
 
 
-def check_winner():
-    if dealer.dealer_score > player1.player_score:
-        print("Dealer wins!")
-    elif dealer.dealer_score == player1.player_score:
-        print("Split, dealer and player equal score. No one wins.")
-        player1.chips += player1.bet
-    else:
-        print("You win")
-        player1.bet += player1.bet * 2
-        player1.chips += player1.bet
 
 
 play_blackjack()
