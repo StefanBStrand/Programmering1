@@ -215,26 +215,35 @@ def play_blackjack():
 
             hit_or_stand = give_hit_or_stand_prompt()
 
-
         # ******* Dealer gets card ********
 
         draw_dealer_card = True
-        if dealer.dealer_score == 21:
-            draw_dealer_card = False
 
         while draw_dealer_card:
-            print("Dealer has to draw card at hand valued at 16.")
-            dealer_new_card = master_deck.pop()  # Dealer draws new card
-            dealer.dealer_hand.append(dealer_new_card)
-            dealer.dealer_score += dealer_new_card.value
-            print(f"Dealer draws {dealer_new_card}. Dealer hand now consists of {dealer.dealer_hand} with a"
-                  f"value of {dealer.dealer_score}")
+            if dealer.dealer_score == 21:  # Checking if dealer has BJ - NOt checked... 
+                draw_dealer_card = False  # stop dealing cards to dealer.
+                print("Dealer has blackjack! you lose. Better luck next time.")
+            elif 17 <= dealer.dealer_score <= 21:  # If dealer has score between 17 and 21, stop dealing cards.
+                draw_dealer_card = False
+                print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
+            else:
+                print("Dealer has to draw card at hand valued at 16.")
+                dealer_new_card = master_deck.pop()  # Dealer draws new card
+                dealer.dealer_hand.append(dealer_new_card)
+                dealer.dealer_score += dealer_new_card.value
+                print(f"Dealer draws {dealer_new_card}. Dealer hand now consists of {dealer.dealer_hand} with a"
+                      f"value of {dealer.dealer_score}")
 
-            if dealer.dealer_score > 16:
-                draw_dealer_card = False
-            elif dealer.dealer_score > 21:
-                # print bust
-                draw_dealer_card = False
+                if 17 <= dealer.dealer_score <= 21:  # Checked, this works. Dealer stands if true.
+                    draw_dealer_card = False
+                    print(f"Dealer stands! Dealer has {dealer.dealer_hand} with a value of {dealer.dealer_score}")
+
+                elif dealer.dealer_score > 21:  # Checked - this works, prints dealer bust if bust.
+                    draw_dealer_card = False
+                    print("Dealer bust! You win!")
+
+
+
 
 
 
