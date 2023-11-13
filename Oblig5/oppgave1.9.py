@@ -14,7 +14,4 @@ y = 0
 for j in range(0, 5):
     y += j
 
-print(y)
-
-# 1: j = 0 and y = 0
-# 2: j =
+print(y)  # Prints 10
