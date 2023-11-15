@@ -38,7 +38,7 @@ shopping_cart1 = {}
 
 # changed ware_key to shopping_cart_key. The name ware_key of variable before confused me.
 
-def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, number_of_ware):
+def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, number_of_ware=1):
     if ware in all_wares:
         in_stock = all_wares[ware]["number_in_stock"]  # creating variable for simplicity.
 
