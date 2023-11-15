@@ -33,3 +33,4 @@ def is_number_of_ware_in_stock(ware, number_of_ware):
 
 
 is_number_of_ware_in_stock("playstation_5", 5)
+is_number_of_ware_in_stock("amd_processor", 10)

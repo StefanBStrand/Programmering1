@@ -1,5 +1,4 @@
 
-
 all_wares = {
     "amd_processor": {
         "name": "AMD Ryzen 9 5900X Processor",
@@ -39,4 +38,3 @@ def print_ware_information(ware_name):  # function taking one parameter.
 
 print_ware_information("amd_processor")
 print_ware_information("Xbox")
-

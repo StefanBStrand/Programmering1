@@ -25,7 +25,6 @@ all_wares = {
 
 shopping_cart1 = {}
 
-
 # First check if ware is in all_wares
 # if it is, then check the stock of ware
 # If stock is zero, --> print you cannot add this item or something that way.
@@ -35,8 +34,8 @@ shopping_cart1 = {}
 # add correct way of ware to be added to the dictionary shopping cart.
 # Remember to deduct amount added to cart from stock in all_wares.
 
-
 # changed ware_key to shopping_cart_key. The name ware_key of variable before confused me.
+
 
 def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, number_of_ware=1):
     if ware in all_wares:

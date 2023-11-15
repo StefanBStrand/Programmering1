@@ -44,23 +44,5 @@ def calculate_average_ware_rating(ware):
                 print(f" {item_key}: {item_value}")  # here, keys and values for inner (nested) dict is printed
             print()  # another blank line for readability
         
-        
-
 
 calculate_average_ware_rating("xbox")
-
-
-
-
-#  print(f"Average rating for the AMD Processor:{ws.calculate_average_ware_rating(all_wares['amd_processor'])}")
-
-"""
-Original else block: prints horisontally, need printout to be more vertical for read
-
-else:                                                                                
-    print("Selected ware not in stock or not available. This is the current stock:") 
-    all_wares_in_stock = all_wares.items()                                           
-    for item in all_wares_in_stock:                                                  
-        for ware_name in item:                                                       
-            print(ware_name)                                          
-"""
