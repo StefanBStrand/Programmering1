@@ -18,7 +18,7 @@ def get_car_age(car_key):
         return "Car not found in the register"
 
 
-age_of_toyota = get_car_age("toyotaBZ4X")
+if __name__ == "__main__":
+    age_of_toyota = get_car_age("toyotaBZ4X")
 
-print(f"The age of the car is {age_of_toyota} years old")
-
+    print(f"The age of the car is {age_of_toyota} years old")
