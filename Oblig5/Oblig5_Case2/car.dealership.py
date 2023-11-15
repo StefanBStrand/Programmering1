@@ -1,32 +1,32 @@
 car_register = {
     "toyotaBZ4X": {
-    "brand": "Toyota",
-    "model": "Corolla",
-    "price": 96_000,
-    "year": 2012,
-    "month": 8,
-    "new": False,
-    "km": 163_000
+        "brand": "Toyota",
+        "model": "Corolla",
+        "price": 96_000,
+        "year": 2012,
+        "month": 8,
+        "new": False,
+        "km": 163_000
     },
 
     "pugeot408": {
-    "brand": "Pugeot",
-    "model": "408",
-    "price": 330_000,
-    "year": 2019,
-    "month": 1,
-    "new": False,
-    "km": 40_000
+        "brand": "Pugeot",
+        "model": "408",
+        "price": 330_000,
+        "year": 2019,
+        "month": 1,
+        "new": False,
+        "km": 40_000
     },
 
     "audiRS3": {
-    "brand": "Audi",
-    "model": "RS3",
-    "price": 473_000,
-    "year": 2022,
-    "month": 2,
-    "new": True,
-    "km": 0
+        "brand": "Audi",
+        "model": "RS3",
+        "price": 473_000,
+        "year": 2022,
+        "month": 2,
+        "new": True,
+        "km": 0
 
     },
 }
@@ -35,20 +35,34 @@ NEW_CAR_REGISTRATION_FEE = 8745
 RENT_CAR_PERCENTAGE = 0.4
 RENT_NEW_CAR__FEE = 1000
 
+
 def print_car_information(car):
-    # Oppgave 3.1
+    print()  # Oppgave 3.1
+
+
 def create_car(car_register, brand, model, price, year, month, new, km):
-    # Oppgave 3.2
+    print()  # Oppgave 3.2
+
+
 def get_car_age(car):
-    # Oppgave 3.3
+    print()  # Oppgave 3.3
+
+
 def next_eu_control(car):
-    # Oppgave 3.4
+    print()  # Oppgave 3.4
+
+
 def rent_car_monthly_price(car):
-    # Oppgave 3.5
+    print()  # Oppgave 3.5
+
+
 def calculate_total_price(car):
-    # Oppgave 3.6
+    print()  # Oppgave 3.6
+
+
 def is_new(car):
     return car['new']
+
 
 if __name__ == '__main__':
     create_car(car_register, "Volvo", "V90", 850_000, 2021, 12, True, 0)
