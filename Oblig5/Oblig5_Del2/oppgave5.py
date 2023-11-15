@@ -40,7 +40,7 @@ shopping_cart1 = {}
 
 def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, number_of_ware):
     if ware in all_wares:
-        in_stock = all_wares[ware]["number_in_stock"]
+        in_stock = all_wares[ware]["number_in_stock"]  # creating variable for simplicity.
 
         if in_stock == 0:
             print(f"{ware} is not in stock, you cannot buy this ware at the moment")
@@ -52,7 +52,7 @@ def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, 
                     print(item)
             return
 
-        amount_to_add_to_cart = min(number_of_ware, in_stock)  #min function used to find the smalles of two arguments,
+        amount_to_add_to_cart = min(number_of_ware, in_stock)  # min function used to find the smallest of two arguments
         # easy way to check if I want to add more than what is available in stock. If so, the min (smaller number) of
         # the two will be returned.
 
