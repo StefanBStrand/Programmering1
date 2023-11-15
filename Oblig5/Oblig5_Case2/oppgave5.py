@@ -8,10 +8,10 @@ def next_eu_control(car_key):
         car_manufacture_year = car["year"]
         car_manufacture_month = car["month"]
 
-        # Get today's date
+        # Get the current date.
         today = datetime.date.today()
 
-        # adding 2 years until the date is in the future for the new inspection
+        # adding 2 years from manufacture date until the date is in the future for the new inspection.
         next_inspection_year = car_manufacture_year
         while next_inspection_year <= today.year:
             next_inspection_year += 2

@@ -2,7 +2,7 @@ import car_dealership as dealership
 import oppgave3 as car_age_method
 
 
-# Extracted code to method, to make it reusable as the task suggests.
+# Extracted code block to method, to make it reusable as the task suggests, and for cleaner code in this file.
 def get_car_age_fee(car_age):
     if 0 <= car_age <= 3:
         return 6681
@@ -22,7 +22,7 @@ def calculate_total_price(car_key):
         if dealership.car_register[car_key]["new"]:
             car_age_fee = 10783
         else:
-            car_age_fee = get_car_age_fee(car_age)
+            car_age_fee = get_car_age_fee(car_age)  # using code extracted as separate function here!
 
         total_car_price = car_price + car_age_fee
 

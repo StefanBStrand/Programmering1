@@ -18,7 +18,8 @@ def get_car_age(car_key):
         return "Car not found in the register"
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # adding this if check here so that code below does not run when importing functionality
+    # in other files.
     age_of_toyota = get_car_age("toyotaBZ4X")
 
     print(f"The age of the car is {age_of_toyota} years old")
