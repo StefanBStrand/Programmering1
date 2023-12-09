@@ -37,4 +37,5 @@ def print_ware_information(ware_name):  # function taking one parameter.
 
 
 print_ware_information("amd_processor")
+print()
 print_ware_information("Xbox")
