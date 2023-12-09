@@ -28,36 +28,38 @@ all_wares = {
 
 # Filters out all wares that are in stock and prints info about each of them
 
-all_wares_in_stock = ws.get_all_wares_in_stock(all_wares)
+if __name__ == "__main__":
 
-for ware in all_wares_in_stock.values():
-    ws.print_ware_information(ware)
+    all_wares_in_stock = ws.get_all_wares_in_stock(all_wares)
 
-# Prints average rating for this ware
+    for ware in all_wares_in_stock.values():
+        ws.print_ware_information(ware)
 
-print(f"Average rating for the AMD Processor:{ws.calculate_average_ware_rating(all_wares['amd_processor'])}")
-print()
+    # Prints average rating for this ware
 
-# Creates empty shopping cart
+    print(f"Average rating for the AMD Processor:{ws.calculate_average_ware_rating(all_wares['amd_processor'])}")
+    print()
 
-shopping_cart = {}
+    # Creates empty shopping cart
 
-ws.add_number_of_ware_to_shopping_cart("amd_processor",
-                                       all_wares["amd_processor"], shopping_cart)
-ws.add_number_of_ware_to_shopping_cart("playstation_5",
-                                       all_wares["playstation_5"], shopping_cart, 2)
-ws.add_number_of_ware_to_shopping_cart("hdmi_cable", all_wares["hdmi_cable"],
-                                       shopping_cart, 4)
+    shopping_cart = {}
 
-print()
-print(f"THe shopping cart: {shopping_cart}")
+    ws.add_number_of_ware_to_shopping_cart("amd_processor",
+                                           all_wares["amd_processor"], shopping_cart)
+    ws.add_number_of_ware_to_shopping_cart("playstation_5",
+                                           all_wares["playstation_5"], shopping_cart, 2)
+    ws.add_number_of_ware_to_shopping_cart("hdmi_cable", all_wares["hdmi_cable"],
+                                           shopping_cart, 4)
 
-# Creating instance of class Wallet: a wallet containing 10000 NOK
-wallet = Wallet(10000)
+    print()
+    print(f"THe shopping cart: {shopping_cart}")
 
-# Tries to buy wares in shopping cart
-ws.buy_shopping_cart()  # parameters defined in task will go inside partentheses
+    # Creating instance of class Wallet: a wallet containing 10000 NOK
+    wallet = Wallet(10000)
+
+    # Tries to buy wares in shopping cart
+    ws.buy_shopping_cart()  # parameters defined in task will go inside partentheses
 
 
-# Prints amount of money in wallet after purchase
-print(f"The amount in the wallet after the purchase: {wallet.get_amount()}")
+    # Prints amount of money in wallet after purchase
+    print(f"The amount in the wallet after the purchase: {wallet.get_amount()}")
