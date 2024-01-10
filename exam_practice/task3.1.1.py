@@ -1,4 +1,4 @@
-# Alternative solution to 3.1 using the for loop i wrote on the exam.. which was not great.
+# Alternative solution to 3.1 using the for loop I wrote on the exam. which was not great.
 
 menu = {"Ribbe": 129.90,
         "Pinnekjøtt": 159.90,
