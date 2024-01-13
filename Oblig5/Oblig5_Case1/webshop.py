@@ -3,7 +3,7 @@
 
 # ***** HERE IS THE FUNCTION I NEED TO COMPLETE FOR TASK 1 *****
 def print_ware_information(ware):
-    print(f"Name: {ware[]}")
+    print()
 
     # Prints info on a specified ware.
 

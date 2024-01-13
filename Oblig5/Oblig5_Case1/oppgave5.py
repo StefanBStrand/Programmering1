@@ -50,11 +50,9 @@ def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, 
                 if all_wares[item]["number_in_stock"] > 0:
                     print(item)
             return
-
         amount_to_add_to_cart = min(number_of_ware, in_stock)  # min function used to find the smallest of two arguments
         # easy way to check if I want to add more than what is available in stock. If so, the min (smaller number) of
         # the two will be returned.
-
         if shopping_cart_key in shopping_cart:  # checking to see if ware already exists as key in shopping cart.
             shopping_cart[shopping_cart_key]["quantity"] += amount_to_add_to_cart
         else:  # Creating a new entry in dictionary if key is not found there from before.
@@ -63,9 +61,7 @@ def add_number_of_ware_to_shopping_cart(ware, shopping_cart_key, shopping_cart, 
                 "price": all_wares[ware]["price"],
                 "quantity": amount_to_add_to_cart
             }
-
         all_wares[ware]["number_in_stock"] -= amount_to_add_to_cart
-
         print(f"Added {amount_to_add_to_cart} of {ware} to your shopping cart.")
     else:
         print(f"{ware} is not available to buy.")
